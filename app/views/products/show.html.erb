@@ -1,24 +1,66 @@
 <!-- app/views/products/show.html.erb -->
+<nav class="navbar navbar-inverse">
+  <div class="">
+    <h3 class="text-white align-items-center" style="">Ratings Challenge</h3>
+  </div>
+</nav>
 
-<h1><%= @product.name %></h1>
-<p>Average Rating: <%= @average_rating %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+			<h1><%= @product.name %></h1>
+			<div class="d-flex">
+					<p><%= @average_rating %></p>
+					<% @average_rating.truncate.times do |review| %>
+						<i class="fa-solid fa-star"></i>
+					<% end %>
+				<button><p>Add review</p></button>
+			</div>
+			<div>
+				<p>Reviews</p>
+				<div>
+					<ul class="list-unstyled">
+						<% @product.reviews.each do |review| %>
+							<li>
+								<% review.rating.times do |review| %>
+									<i class="fa-solid fa-star"></i>
+								<% end %>
+								<%= review.rating %>,
+								<%= review.comment %>
+							</li>
+						<% end %>
+					</ul>
+				</div>
 
-<h2>Add a Review</h2>
-<form id="review-form">
-  <label for="rating">Rating (1-5)</label>
-  <select id="rating" name="rating">
-    <option value="1">⭐️</option>
-    <option value="2">⭐️⭐️</option>
-    <option value="3">⭐️⭐️⭐️</option>
-    <option value="4">⭐️⭐️⭐️⭐️</option>
-    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
-  </select>
-  <br>
-  <label for="comment">Comment</label>
-  <textarea id="comment" name="comment"></textarea>
-  <br>
-  <button type="submit">Submit Review</button>
-</form>
+			</div>
+
+    </div>
+
+    <div class="col-md-4 rounded-lg">
+			<h2>What's your rating?</h2>
+			<form  action="/products/<%=@product.id%>/reviews" accept-charset="UTF-8" method="post" id="review-form">
+				<label for="rating">Rating</label>
+				<select id="rating" name="rating">
+					<option value="1">⭐️</option>
+					<option value="2">⭐️⭐️</option>
+					<option value="3">⭐️⭐️⭐️</option>
+					<option value="4">⭐️⭐️⭐️⭐️</option>
+					<option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+				</select>
+				<br>
+				<p>Review</p>
+				<label for="comment">Start typing.....</label>
+				<textarea id="comment" name="comment"></textarea>
+				<br>
+				<button type="submit">Submit Review</button>
+			</form>
+    </div>
+  </div>
+
+</div>
+
+
+
 <script>
   const productId = <%= @product.id %>;
 </script>

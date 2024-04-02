@@ -3,9 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-# config/routes.rb
+  # config/routes.rb
   resources :products do
     resources :reviews, only: [:create]
   end
-
 end

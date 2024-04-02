@@ -47,7 +47,10 @@ gem "bootsnap", require: false
 
 # Faker gem
 gem 'faker', '~> 2.18', group: :development
-
+# bootstrap and jquery
+gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.beta2'
+gem 'jquery-rails', '4.3.1'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
