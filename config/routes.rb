@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # config/routes.rb
-  resources :products do
+
+	# only use products/show for one page application
+  resources :products, only: [:show] do
+		# route for submmiting a review from show page
     resources :reviews, only: [:create]
   end
 end
